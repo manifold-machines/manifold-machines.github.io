@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Manifold Machines</title>
     <meta name="description" content="AI research with less resources. Advancing Artificial Intelligence for low-resource contexts through multimodality, safety, and sample-efficient learning.">
     
@@ -415,6 +416,299 @@
                 position: absolute;
                 top: 0;
                 left: 0;
+=======
+    <title>Manifold</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+        :root {
+            --terminal-bg: #0a0e0a; /* Slightly greenish black */
+            --terminal-text: #32cd32; /* Lime Green - gentler */
+            --terminal-glow: rgba(50, 205, 50, 0.3);
+            --terminal-glow-strong: rgba(50, 205, 50, 0.6);
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--terminal-bg);
+             /* Radial gradient for the CRT glow */
+            background-image: radial-gradient(
+                ellipse at center,
+                rgba(255, 255, 255, 0.06) 0%,
+                rgba(255, 255, 255, 0) 70%
+            );
+            color: var(--terminal-text);
+            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            overflow-x: hidden;
+            /* Animation for flicker and jitter */
+            animation: crt-effect 3s infinite linear alternate;
+        }
+
+        /* Scanline overlay effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0.2) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .terminal-container {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+        
+        /* Main text glow effect */
+        .terminal-container * {
+            text-shadow: 0 0 5px var(--terminal-glow), 0 0 8px var(--terminal-glow);
+        }
+
+        .terminal-header {
+            padding: 5px 15px;
+            background-color: var(--terminal-text);
+            color: var(--terminal-bg);
+            text-shadow: none !important;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .ascii-art {
+            white-space: pre;
+            font-size: 1em; /* Adjusted for better visuals */
+            line-height: 1.1;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            opacity: 0.9;
+            letter-spacing: normal;
+        }
+
+        .prompt::before {
+            content: '[manifold@root ~]$ ';
+            opacity: 0.7;
+        }
+
+        .output {
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1, h2, h3 {
+            color: var(--terminal-text);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 6px var(--terminal-glow-strong), 0 0 10px var(--terminal-glow-strong);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        h3 {
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Styles for project boxes */
+        .project-box {
+            background-color: rgba(50, 205, 50, 0.05);
+            border-left: 3px solid var(--terminal-text);
+            padding: 0.1rem 1.5rem; /* top/bottom padding reduced for tighter look */
+            margin: 1.5rem 0;
+        }
+        .project-box h3 {
+            margin-top: 1rem; /* Adjusted margin */
+            text-shadow: 0 0 6px var(--terminal-glow-strong);
+        }
+        .project-box p {
+            margin-bottom: 1rem; /* Adjusted margin */
+        }
+        
+        .work-links {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .work-links a {
+            text-decoration: none;
+            color: var(--terminal-text);
+        }
+        .ascii-logo {
+            border: 1px solid rgba(50, 205, 50, 0.4);
+            padding: 1rem;
+            white-space: pre;
+            font-size: 1em;
+            line-height: 1.2;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .work-links a:hover .ascii-logo, .work-links a:focus .ascii-logo {
+            background-color: var(--terminal-text);
+            color: var(--terminal-bg);
+            border-color: var(--terminal-text);
+        }
+        /* Remove glow on hover for better readability */
+        .work-links a:hover .ascii-logo, .work-links a:hover .ascii-logo * {
+            text-shadow: none;
+        }
+
+
+        p, a, li {
+            font-size: 1rem;
+        }
+
+        a {
+            color: var(--terminal-text);
+            text-decoration: underline;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            background-color: var(--terminal-text);
+            color: var(--terminal-bg);
+            text-decoration: none;
+            text-shadow: none;
+        }
+        
+        /* Form Styling */
+        form {
+            margin-top: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            background-color: rgba(50, 205, 50, 0.1);
+            border: 1px solid rgba(50, 205, 50, 0.3);
+            color: var(--terminal-text);
+            font-family: inherit;
+            font-size: 1rem;
+            padding: 0.5rem;
+            width: 100%;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+            transition: border 0.3s, background-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border: 1px solid var(--terminal-text);
+            background-color: rgba(50, 205, 50, 0.2);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: transparent;
+            border: 1px solid var(--terminal-text);
+            color: var(--terminal-text);
+            padding: 0.75rem 1.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--terminal-text);
+            color: var(--terminal-bg);
+            text-shadow: none;
+        }
+        
+        .footer-links {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .footer-links a {
+            margin: 0 1rem;
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+
+        /* Blinking cursor effect */
+        .cursor {
+            display: inline-block;
+            background-color: var(--terminal-text);
+            width: 10px;
+            height: 1.2rem;
+            animation: blink 1s step-end infinite;
+            margin-left: 5px;
+            box-shadow: 0 0 5px var(--terminal-glow-strong);
+        }
+
+        /* Keyframe animations */
+        @keyframes blink {
+            from, to { background-color: transparent; }
+            50% { background-color: var(--terminal-text); }
+        }
+
+        @keyframes crt-effect {
+            0% {
+                transform: translateY(0px);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-1px);
+                opacity: 0.98;
+            }
+            100% {
+                transform: translateY(1px);
+                opacity: 1;
+>>>>>>> origin/main
             }
         }
 
@@ -422,6 +716,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
     <div class="container">
         <header>
             <h1>Manifold Machines</h1>
@@ -568,6 +863,85 @@
             <img src="images/edited_manifold-logo-2025-05-21.png" alt="Manifold Machines Logo" class="footer-logo">
             <div class="footer-links">
                 <a href="https://github.com/manifold-intelligence" target="_blank">GitHub</a>
+=======
+    <div class="terminal-container">
+        <div class="terminal-header">MANIFOLD TERMINAL v1.0 - AI Research Division</div>
+<pre class="ascii-art">
+ ___ __ __   ________   ___   __     ________  ______   ______   __       ______      
+/__//_//_/\ /_______/\ /__/\ /__/\  /_______/\/_____/\ /_____/\ /_/\     /_____/\     
+\::\| \| \ \\::: _  \ \\::\_\\  \ \ \__.::._\/\::::_\/_\:::_ \ \\:\ \    \:::_ \ \    
+ \:.      \ \\::(_)  \ \\:. `-\  \ \   \::\ \  \:\/___/\\:\ \ \ \\:\ \    \:\ \ \ \   
+  \:.\-/\  \ \\:: __  \ \\:. _    \ \  _\::\ \__\:::._\/ \:\ \ \ \\:\ \____\:\ \ \ \  
+   \. \  \  \ \\:.\ \  \ \\. \`-\  \ \/__\::\__/\\:\ \    \:\_\ \ \\:\/___/\\:\/.:| | 
+    \__\/ \__\/ \__\/\__\/ \__\/ \__\/\________\/ \_\/     \_____\/ \_____\/ \____/_/ 
+                                                                                      
+</pre>
+
+        <p class="prompt">cat ./manifold/mission.txt</p>
+        <div class="output">
+            <h1>AI for low-resource contexts</h1>
+            <p>We make LLM models smarter with less. Our research explores multimodality, safety and sample-efficient learning, while our tools help bridge the data gap for small languages in just a few lines of code.</p>
+        </div>
+        
+        <p class="prompt">cat ./manifold/about.txt</p>
+        <div class="output">
+             <h2>Check out our work:</h2>
+            <div class="work-links">
+                <a href="https://github.com/manifold-intelligence" target="_blank">
+<pre class="ascii-logo">
+   _____ _    _ 
+  / ____| |  | |
+ | |  __| |__| |
+ | | |_ |  __  |
+ | |__| | |  | |
+  \_____|_|  |_|
+                
+</pre>
+                </a>
+                <a href="https://huggingface.co/ilijalichkovski" target="_blank">
+<pre class="ascii-logo">
+  _    _ ______ 
+ | |  | |  ____|
+ | |__| | |__   
+ |  __  |  __|  
+ | |  | | |     
+ |_|  |_|_|     
+                
+</pre>
+                </a>
+            </div>
+            <p>Large language models are trained and used at an unprecedented scale. As a result, the resource strain for open-source builders and users — be it GPU hours or trillions of tokens — is monumental. We believe much can be achieved with small, local models, by incorporating the latest research advances and doing the boring parts well.</p>
+        </div>
+
+        <p class="prompt">ls -R ./projects/</p>
+        <div class="output">
+            <h2>Ongoing projects</h2>
+            <div class="project-box">
+                <h3>Synglot, our data synthesis library</h3>
+                <p>Our attempt in rising the tide for <strong>low-resource languages</strong> by making it easy to translate and generate rich, expressive and diverse data.</p>
+            </div>
+            <div class="project-box">
+                <h3>Challenging datasets</h3>
+                <p>High-quality data is paramount for effective post-training. We provide novel, previously-unavailable datasets in Macedonian, from mathematics textbooks to medical corpora.</p>
+            </div>
+            <div class="project-box">
+                <h3>Open-source models</h3>
+                <p>We fine-tune open models to see better, and reinforce them to be smarter.</p>
+            </div>
+        </div>
+        
+        <p class="prompt">./get_involved.sh</p>
+        <div class="output">
+            <h2>Interested in contributing?</h2>
+            <p>If you are interested in any part of the LLM development pipeline, get in touch. We are particularly eager to collaborate with people interested in multimodality and LLM evaluations.</p>
+        </div>
+        
+        <p class="prompt">exit<span class="cursor"></span></p>
+
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="https://github.com/manifold-intelligence" target="_blank">Github</a>
+>>>>>>> origin/main
                 <a href="https://huggingface.co/ilijalichkovski" target="_blank">HuggingFace</a>
                 <a href="mailto:ilija@manifold.mk">Email</a>
             </div>
