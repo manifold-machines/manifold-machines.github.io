@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifold Machines</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+        :root {
+            --bg-color: #f0ebe1;
+            --text-color: #1a1a1a;
+            --accent-color: #1B5E20;
+            --border-color: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 0;
+            padding: 2rem 0;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXVuZmVscmVvbmV2dnaytrZ4eHhmZmWrqqqGhoaHh4eTk5OCgoJvb29ra2usrKxycnJocnJpbm1wcnJ3d3d5eXhmZmY3ZbyAAAAAQUlEQVR42uzMSAQAIAwEWF/z/m8IqHJvJ1V6QBEREVFZWekgQBQG3wB1yLhGgQ0Y9wB3iARhBgu7A2kAAAAASUVORK5CYII=');
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h1, h2, h3, .button {
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 400;
+            margin: 0;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            margin: 1rem 0 2.5rem 0;
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .work-links {
+            margin-top: 2rem;
+        }
+
+        .work-links h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .link-images {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .work-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            padding: 1rem;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .work-link:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .work-link img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 0.5rem;
+            filter: brightness(0) saturate(100%);
+        }
+
+        .work-link span {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .illustration-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .illustration-section img {
+            max-width: 300px;
+            height: auto;
+        }
+
+        .illustration-separator img {
+            max-width: 150px;
+            opacity: 0.6;
+            margin: 2rem 0;
+        }
+
+        .mission-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .mission-text {
+            flex: 1.5;
+        }
+        
+        .mission-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .mission-image img {
+            max-width: 500px;
+            height: auto;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .project {
+            margin: 2rem 0;
+            padding: 0;
+            border: 1px solid var(--border-color);
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .project-cover {
+            width: 100%;
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .tag {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.75rem;
+            border-radius: 3px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .project-properties {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 3px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .property {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            font-variant: small-caps;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .mission-text p, .content-section p {
+            font-size: 1.1rem;
+        }
+
+        .keywords-section {
+            text-align: center;
+            margin: 5rem 0 3rem 0;
+        }
+
+        .keywords-section p {
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            font-weight: 400;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            text-align: center;
+        }
+        
+        .footer-links a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            border-bottom: 1px dotted var(--text-color);
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            color: #555;
+        }
+
+        .flourish-separator {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin: 3rem 0;
+            line-height: 1;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            .mission-section {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .link-images {
+                gap: 2rem;
+            }
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .project-properties {
+                grid-template-columns: 1fr;
+            }
+            .project-cover {
+                height: 150px;
+            }
+            .project-cover img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Manifold Machines</h1>
+            <p class="subtitle">AI research for resource-constrained environments</p>
+            
+            <section class="illustration-section">
+                <img src="images/globe.png" alt="Celestial sun illustration">
+            </section>
+            
+            <div class="work-links">
+                <h3>Check out our work</h3>
+                <div class="link-images">
+                    <a href="https://github.com/manifold-intelligence" target="_blank" class="work-link">
+                        <img src="https://www.svgrepo.com/show/35001/github.svg" alt="GitHub">
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://huggingface.co/ilijalichkovski" target="_blank" class="work-link">
+                        <img src="https://www.svgrepo.com/show/401953/hugging-face.svg" alt="HuggingFace">
+                        <span>HuggingFace</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+
+            <section class="mission-section">
+                <div class="mission-text">
+                    <h2>I. Our Mission</h2>
+                    <p>We are dedicated to advancing Artificial Intelligence for low-resource contexts. Our research explores multimodality, safety, and sample-efficient learning, while our tools help bridge the data gap for small languages in just a few lines of code.</p>
+                </div>
+                <div class="mission-image">
+                    <img src="images/globe.png" alt="Line art of a cyborg head">
+                </div>
+            </section>
+
+            <section class="illustration-section illustration-separator">
+                <img src="https://www.svgrepo.com/show/31941/sun.svg" alt="Celestial sun illustration">
+            </section>
+
+            <section class="content-section" id="projects">
+                <h2>II. Compendium of Projects</h2>
+                
+                <div class="project">
+                    <div class="project-cover">
+                        <img src="images/copier.png" alt="Data synthesis illustration">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>Synglot, our data synthesis library</h3>
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Data Synthesis</span>
+                                <span class="tag">Low-Resource Languages</span>
+                            </div>
+                        </div>
+                        <div class="project-properties">
+                            <div class="property"><strong>Status:</strong> Active Development</div>
+                            <div class="property"><strong>Type:</strong> Open-Source Library</div>
+                            <div class="property"><strong>Language:</strong> Python</div>
+                        </div>
+                        <p>Our attempt in rising the tide for <strong>low-resource languages</strong> by making it easy to translate and generate rich, expressive and diverse data.</p>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-cover">
+                        <img src="images/stack_of_papers.png" alt="A pile of papers">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>Challenging Datasets</h3>
+                            <div class="project-tags">
+                                <span class="tag">Macedonian</span>
+                                <span class="tag">Mathematics</span>
+                                <span class="tag">Medical</span>
+                            </div>
+                        </div>
+                        <div class="project-properties">
+                            <div class="property"><strong>Status:</strong> Released</div>
+                            <div class="property"><strong>Type:</strong> Dataset Collection</div>
+                            <div class="property"><strong>Domain:</strong> Education & Healthcare</div>
+                        </div>
+                        <p>High-quality data is paramount for effective post-training. We provide novel, previously-unavailable datasets in Macedonian, from mathematics textbooks to medical corpora.</p>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-cover">
+                        <img src="images/boy_fixing_robot.png" alt="Artificial intelligence">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>Open-Source Models</h3>
+                            <div class="project-tags">
+                                <span class="tag">Vision</span>
+                                <span class="tag">Fine-tuning</span>
+                                <span class="tag">Reinforcement Learning</span>
+                            </div>
+                        </div>
+                        <div class="project-properties">
+                            <div class="property"><strong>Status:</strong> Ongoing Research</div>
+                            <div class="property"><strong>Type:</strong> Model Development</div>
+                            <div class="property"><strong>Focus:</strong> Multimodal AI</div>
+                        </div>
+                        <p>We fine-tune open models to see better, and reinforce them to be smarter.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="illustration-section illustration-separator">
+                <img src="https://www.svgrepo.com/show/31941/sun.svg" alt="Celestial sun illustration">
+            </section>
+
+            <section class="content-section" id="about">
+                 <h2>III. Our Philosophy</h2>
+                 <p>Large language models are trained and used at an unprecedented scale. As a result, the resource strain for open-source builders and users — be it GPU hours or trillions of tokens — is monumental. We believe much can be achieved with small, local models, by incorporating the latest research advances and doing the boring parts well.</p>
+                 
+                 <p>This means:
+                 <ul>
+                     <li>experimenting with novel architectures and techniques</li>
+                     <li>being meticulous about high-quality data</li>
+                     <li>optimizing for efficiency without sacrificing capability</li>
+                 </ul>
+                 </p>
+                 
+                 <p>Safety is paramount in our work. We prioritize the alignment of AI systems with human values, ensuring that our models are robust, reliable, and beneficial to society. This includes rigorous testing, transparent development practices, and careful consideration of potential risks and mitigation strategies.</p>
+            </section>
+            
+            <section class="illustration-section illustration-separator">
+                <img src="https://www.svgrepo.com/show/31941/sun.svg" alt="Celestial sun illustration">
+            </section>
+
+            <section class="content-section" id="contribute">
+                <h2>IV. Contribute to our Work</h2>
+                <p><strong>For Researchers & Engineers:</strong>If you are interested in any part of the LLM development pipeline, get in touch. We are particularly eager to collaborate with people interested in multimodality and LLM evaluations, as we are seeking to pursue and publish research in these areas.</p>
+                
+                <p><strong>For Organizations & Institutions:</strong> You can support our research by sharing our work with your networks, sponsoring compute credits, or partnering with us partnership opportunities.</p>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="https://github.com/manifold-intelligence" target="_blank">GitHub</a>
+                <a href="https://huggingface.co/ilijalichkovski" target="_blank">HuggingFace</a>
+                <a href="mailto:ilija@manifold.mk">Email</a>
+            </div>
+            <p class="copyright">&copy; Manifold MMXXV. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
