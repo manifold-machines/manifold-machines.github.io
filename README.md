@@ -1,1 +1,1 @@
-# manifold-intelligence
+# manifold-machines
