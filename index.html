@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manifold Machines</title>
+    <meta name="description" content="AI research with less resources. Advancing Artificial Intelligence for low-resource contexts through multimodality, safety, and sample-efficient learning.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manifold-intelligence.github.io/">
+    <meta property="og:title" content="Manifold Machines - AI Research with Less Resources">
+    <meta property="og:description" content="We are dedicated to advancing Artificial Intelligence for low-resource contexts. Our research explores multimodality, safety, and sample-efficient learning.">
+    <meta property="og:image" content="https://manifold-intelligence.github.io/images/edited_manifold-logo-2025-05-21.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Manifold Machines">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://manifold-intelligence.github.io/">
+    <meta property="twitter:title" content="Manifold Machines - AI Research with Less Resources">
+    <meta property="twitter:description" content="We are dedicated to advancing Artificial Intelligence for low-resource contexts. Our research explores multimodality, safety, and sample-efficient learning.">
+    <meta property="twitter:image" content="https://manifold-intelligence.github.io/images/edited_manifold-logo-2025-05-21.png">
+    
+    <link rel="icon" type="image/png" href="images/edited_manifold-logo-2025-05-21.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
@@ -12,6 +32,8 @@
             --text-color: #1a1a1a;
             --accent-color: #1B5E20;
             --border-color: #1a1a1a;
+            --radial-focal-x: 50%;
+            --radial-focal-y: 25%;
         }
 
         body {
@@ -34,6 +56,22 @@
         header {
             text-align: center;
             margin-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo {
+            width: 60px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
         }
 
         h1, h2, h3, .button {
@@ -63,6 +101,52 @@
             font-size: 1rem;
             letter-spacing: 0.1em;
             transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .hero-background-section {
+            position: relative;
+            width: 100vw;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            padding: 15rem 0 20rem 0;
+            text-align: center;
+        }
+
+        .hero-background-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('images/landscape.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            mask: radial-gradient(
+                ellipse 100% 120% at var(--radial-focal-x) var(--radial-focal-y),
+                rgba(0, 0, 0, 1) 0%,
+                rgba(0, 0, 0, 0.8) 30%,
+                rgba(0, 0, 0, 0.4) 60%,
+                rgba(0, 0, 0, 0.1) 85%,
+                rgba(0, 0, 0, 0) 100%
+            );
+            -webkit-mask: radial-gradient(
+                ellipse 100% 120% at var(--radial-focal-x) var(--radial-focal-y),
+                rgba(0, 0, 0, 1) 0%,
+                rgba(0, 0, 0, 0.8) 30%,
+                rgba(0, 0, 0, 0.4) 60%,
+                rgba(0, 0, 0, 0.1) 85%,
+                rgba(0, 0, 0, 0) 100%
+            );
+            z-index: -1;
+        }
+
+        .hero-background-section > * {
+            position: relative;
+            z-index: 1;
         }
 
         .work-links {
@@ -101,7 +185,7 @@
         }
 
         .work-link img {
-            width: 48px;
+            width: auto;
             height: 48px;
             margin-bottom: 0.5rem;
             filter: brightness(0) saturate(100%);
@@ -131,24 +215,13 @@
         }
 
         .mission-section {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            margin-bottom: 5rem;
+            text-align: left;
+            margin-bottom: 1rem;
         }
 
         .mission-text {
-            flex: 1.5;
-        }
-        
-        .mission-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .mission-image img {
-            max-width: 500px;
-            height: auto;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .content-section {
@@ -172,6 +245,8 @@
             border-bottom: 1px solid var(--border-color);
             overflow: hidden;
             position: relative;
+            transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
 
         .project-cover img {
@@ -181,6 +256,15 @@
             position: absolute;
             top: 0;
             left: 0;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project:hover .project-cover {
+            height: 600px;
+        }
+
+        .project:hover .project-cover img {
+            transform: scale(1);
         }
 
         .project-content {
@@ -341,26 +425,29 @@
     <div class="container">
         <header>
             <h1>Manifold Machines</h1>
-            <p class="subtitle">AI research for resource-constrained environments</p>
-            
-            <section class="illustration-section">
-                <img src="images/globe.png" alt="Celestial sun illustration">
-            </section>
-            
-            <div class="work-links">
-                <h3>Check out our work</h3>
-                <div class="link-images">
-                    <a href="https://github.com/manifold-intelligence" target="_blank" class="work-link">
-                        <img src="https://www.svgrepo.com/show/35001/github.svg" alt="GitHub">
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://huggingface.co/ilijalichkovski" target="_blank" class="work-link">
-                        <img src="https://www.svgrepo.com/show/401953/hugging-face.svg" alt="HuggingFace">
-                        <span>HuggingFace</span>
-                    </a>
+            <p class="subtitle">AI research with less resources</p>
+        </header>
+        
+        <div class="hero-background-section">
+            <div class="container">
+                <section class="illustration-section">
+                </section>
+                
+                <div class="work-links">
+                    <h3>Check out our work</h3>
+                    <div class="link-images">
+                        <a href="https://github.com/manifold-intelligence" target="_blank" class="work-link">
+                            <img src="images/GitHub_Logo.png" alt="GitHub">
+                            <span></span>
+                        </a>
+                        <a href="https://huggingface.co/ilijalichkovski" target="_blank" class="work-link">
+                            <img src="images/hf-logo-with-title.png" alt="HuggingFace">
+                            <span></span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </header>
+        </div>
 
         <main>
 
@@ -369,21 +456,16 @@
                     <h2>I. Our Mission</h2>
                     <p>We are dedicated to advancing Artificial Intelligence for low-resource contexts. Our research explores multimodality, safety, and sample-efficient learning, while our tools help bridge the data gap for small languages in just a few lines of code.</p>
                 </div>
-                <div class="mission-image">
-                    <img src="images/globe.png" alt="Line art of a cyborg head">
-                </div>
             </section>
 
-            <section class="illustration-section illustration-separator">
-                <img src="https://www.svgrepo.com/show/31941/sun.svg" alt="Celestial sun illustration">
-            </section>
+            <div class="flourish-separator">❧</div>
 
             <section class="content-section" id="projects">
                 <h2>II. Compendium of Projects</h2>
                 
                 <div class="project">
                     <div class="project-cover">
-                        <img src="images/copier.png" alt="Data synthesis illustration">
+                        <img src="images/engine.png" alt="Data synthesis illustration">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
@@ -405,7 +487,7 @@
 
                 <div class="project">
                     <div class="project-cover">
-                        <img src="images/stack_of_papers.png" alt="A pile of papers">
+                        <img src="images/large-printer.png" alt="A pile of papers">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
@@ -421,13 +503,13 @@
                             <div class="property"><strong>Type:</strong> Dataset Collection</div>
                             <div class="property"><strong>Domain:</strong> Education & Healthcare</div>
                         </div>
-                        <p>High-quality data is paramount for effective post-training. We provide novel, previously-unavailable datasets in Macedonian, from mathematics textbooks to medical corpora.</p>
+                        <p>High-quality data is paramount for effective post-training. We provide novel, previously-unavailable datasets in Macedonian, from mathematics to medical scenarios.</p>
                     </div>
                 </div>
 
                 <div class="project">
                     <div class="project-cover">
-                        <img src="images/boy_fixing_robot.png" alt="Artificial intelligence">
+                        <img src="images/commodore.png" alt="Artificial intelligence">
                     </div>
                     <div class="project-content">
                         <div class="project-header">
@@ -448,9 +530,7 @@
                 </div>
             </section>
 
-            <section class="illustration-section illustration-separator">
-                <img src="https://www.svgrepo.com/show/31941/sun.svg" alt="Celestial sun illustration">
-            </section>
+            <div class="flourish-separator">❧</div>
 
             <section class="content-section" id="about">
                  <h2>III. Our Philosophy</h2>
@@ -467,25 +547,31 @@
                  <p>Safety is paramount in our work. We prioritize the alignment of AI systems with human values, ensuring that our models are robust, reliable, and beneficial to society. This includes rigorous testing, transparent development practices, and careful consideration of potential risks and mitigation strategies.</p>
             </section>
             
-            <section class="illustration-section illustration-separator">
-                <img src="https://www.svgrepo.com/show/31941/sun.svg" alt="Celestial sun illustration">
-            </section>
+            <div class="flourish-separator">❧</div>
 
             <section class="content-section" id="contribute">
                 <h2>IV. Contribute to our Work</h2>
-                <p><strong>For Researchers & Engineers:</strong>If you are interested in any part of the LLM development pipeline, get in touch. We are particularly eager to collaborate with people interested in multimodality and LLM evaluations, as we are seeking to pursue and publish research in these areas.</p>
+                <p><strong>For Researchers & Engineers:</strong> If you are interested in any part of the LLM development pipeline, get in touch. We are particularly eager to collaborate with people interested in multimodality and LLM evaluations, as we are seeking to pursue and publish research in these areas.</p>
                 
                 <p><strong>For Organizations & Institutions:</strong> You can support our research by sharing our work with your networks, sponsoring compute credits, or partnering with us partnership opportunities.</p>
+            </section>
+
+            <div class="flourish-separator">❧</div>
+
+            <section class="content-section" id="people">
+                <h2>V. People</h2>
+                <p>.</p>
             </section>
         </main>
         
         <footer>
+            <img src="images/edited_manifold-logo-2025-05-21.png" alt="Manifold Machines Logo" class="footer-logo">
             <div class="footer-links">
                 <a href="https://github.com/manifold-intelligence" target="_blank">GitHub</a>
                 <a href="https://huggingface.co/ilijalichkovski" target="_blank">HuggingFace</a>
                 <a href="mailto:ilija@manifold.mk">Email</a>
             </div>
-            <p class="copyright">&copy; Manifold MMXXV. All rights reserved.</p>
+            <p class="copyright">&copy; Manifold 2025. All rights reserved.</p>
         </footer>
 
     </div>
