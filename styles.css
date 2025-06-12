@@ -126,6 +126,58 @@ h1 {
     margin-top: 2rem;
 }
 
+.language-switcher {
+    margin-bottom: 3rem;
+}
+
+.language-switcher h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.9;
+}
+
+.language-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.language-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 0.75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+.language-link:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-color);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.language-link.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--border-color);
+}
+
+.language-flag {
+    font-size: 1.2rem;
+}
+
+.language-text {
+    font-weight: 400;
+}
+
 .work-links h3 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
@@ -233,7 +285,7 @@ h1 {
 }
 
 .project:hover .project-cover {
-    height: 600px;
+    height: 400px;
 }
 
 .project:hover .project-cover img {
