@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=IBM+Plex+Mono:wght@400;500&display=swap');
 :root {
     --bg-color: #f0ebe1;
     --text-color: #1a1a1a;
@@ -48,7 +48,7 @@ header {
 }
 
 h1, h2, h3, .button {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Literata', serif;
 }
 
 h1 {
@@ -62,7 +62,7 @@ h1 {
 .subtitle {
     font-size: 2rem;
     margin: 1rem 0 2.5rem 0;
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Literata', serif;
 }
 
 .button {
@@ -154,7 +154,7 @@ h1 {
     border: 1px solid transparent;
     border-radius: 4px;
     transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Literata', serif;
     font-size: 0.9rem;
     letter-spacing: 0.05em;
 }
