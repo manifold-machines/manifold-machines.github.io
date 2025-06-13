@@ -181,8 +181,8 @@ h1 {
 
 .work-links h3 {
     font-size: 1.5rem;
+    font-variant: small-caps;
     margin-bottom: 1.5rem;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
